@@ -1,0 +1,20 @@
+server:
+  port: 8081
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver              # mysql驱动包
+    url: jdbc:mysql://148.70.125.106:3306/activity?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&nullCatalogMeansCurrent=true              # 数据库名称
+    username: root
+    password: Zhuyulin123.
+  activiti:
+    database-schema-update: true
+    history-level: full
+    db-history-used: true
+    check-process-definitions: false
+  devtools:
+    restart:
+      enabled: true
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
