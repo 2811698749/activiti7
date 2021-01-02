@@ -43,14 +43,18 @@ public class ActivityController {
         //2.根据流程定义启动流程
 //        Map<String,Object> map = new HashMap<>();
 //        map.put("commit","zhangsan");
-        ProcessInstance instance =processEngine.getRuntimeService().startProcessInstanceByKey("apply_leave");
+        ProcessInstance instance =processEngine.getRuntimeService().startProcessInstanceByKey("apply_leave","1001");
         System.out.printf(instance.getId());
         //3.输出内容
         return instance.getId();
     }
     @GetMapping("/getTasks")
     public String getTasks(String assign){
-      Task t =  taskService.createTaskQuery().processDefinitionKey("apply_leave").taskAssignee("zhangsan").list().get(0);
+      Task t =  taskService.createTaskQuery()
+              .processDefinitionKey("apply_leave")
+              .taskAssignee("zhangsan")
+              .list()
+              .get(0);
           System.out.println("流程定义例的Id:"+t.getProcessDefinitionId());
           System.out.println("流程实例的Id:"+t.getProcessInstanceId());
           System.out.println("任务名称:"+t.getName());
